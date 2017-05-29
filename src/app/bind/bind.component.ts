@@ -14,6 +14,8 @@ export class BindComponent implements OnInit {
   searchInput: FormControl = new FormControl();
 
   birthday: Date = new Date();
+  pi = 3.1415926;
+  size = 7;
 
   constructor() {
     this.searchInput.valueChanges

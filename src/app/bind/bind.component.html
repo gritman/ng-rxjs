@@ -4,5 +4,8 @@
 <input [formControl]="searchInput">
 <div>
   <!-- ng内置了十几个管道 -->
-  <p>我的生日是{{birthday | date | uppercase}}</p>
+  <p>我的生日是{{birthday | date:'yyyy-MM-dd HH:mm:ss' | uppercase}}</p>
 </div>
+<p>圆周率是{{pi | number: '2.1-4'}}</p>
+<p>圆周率是{{pi | async}}</p> <!-- 解包一个异步观测流 -->
+<p>试试自定义管道{{size | multiple: 2}}</p>
