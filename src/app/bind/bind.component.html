@@ -1,3 +1,7 @@
 <p>
-  bind works!
+  响应式变成DEMO
 </p>
+<input (keyup)="onKey($event)">
+<!-- 模板本地变量 -->
+<!-- NG把事件作为一个永不结束的流来处理,而不是一次 -->
+<input #myField (keyup)="onKey2(myField.value)">
