@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-bind',
@@ -8,28 +9,18 @@ import {Observable} from 'rxjs';
 })
 export class BindComponent implements OnInit {
 
+  // 每当input里的值发生改变时,这个对象就会发射一个valuechange事件,然后需要订阅该事件
+  searchInput: FormControl = new FormControl();
+
   constructor() {
-    // 观察这个流,筛选出偶数,算平方,打印到页面上
-    // from是创建流,filter和map也都是返回一个流
-    // 元素一个一个发射,发射的元素可以是任何类型
-    Observable.from([1, 2, 3, 4])
-      .filter(e => e % 2 == 0)
-      .map(e => e * e)
-      .subscribe(
-        e => console.log(e), // 处理流元素
-        err => console.error(err), // 处理异常
-        () => console.log('结束啦') // 处理结束
-      );
+    this.searchInput.valueChanges
+      .subscribe( stockCode => this.getStockInfo(stockCode) );
   }
 
   ngOnInit() {
   }
 
-  onKey(event) {
-    console.log(event.target.value);
-  }
-
-  onKey2(value: string) {
+  getStockInfo(value: String) {
     console.log(value);
   }
 
