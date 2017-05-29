@@ -13,6 +13,8 @@ export class BindComponent implements OnInit {
   // 每当input里的值发生改变时,这个对象就会发射一个valuechange事件,然后需要订阅该事件
   searchInput: FormControl = new FormControl();
 
+  birthday: Date = new Date();
+
   constructor() {
     this.searchInput.valueChanges
       .debounceTime(500) // 输入过程中,暂停了500ms,才去处理这个流,而不是每输入一个字符就调用一次,延迟响应
